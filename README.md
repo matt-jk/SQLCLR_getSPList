@@ -13,10 +13,12 @@ There are two dlls in the release folder:
 *About the XmlSerializers.dll file: This project uses the .net XML libraries, and the way they work they need to write their intermediate steps to disk, which the assemblies in 2008 R2 didn't allow.  That XmlSerializers.dll file gets around that limitation.  SQLServer 2016 doesn't have that same limitation so you won't need that file.*
 
 Being redundant for clarity:
-* To deploy to the Sql Server 2008R2, copy both dll files onto a folder on the database server
+* To deploy to the Sql Server 2008R2, copy both dll files to a folder on the database server
 * To deploy to SQL Server 2016, only copy SQLCLR_getSPList.dll to a folder on the database server
 
-Open the Management Studio editor, connected to that database server, open a new query window and run the following script (for your path, my path was c:\sqlclrfiles)
+Once the files are copied you'll need to run some configuration statements on the database server.  This script is `install.sql` and also below.
+
+Open the Management Studio editor, connected to that database server, open a new query window and run the script (for your path, my path was c:\sqlclrfiles)
 ```sql
 use tempdb
 go
@@ -58,22 +60,15 @@ EXTERNAL NAME GetSPList.StoredProcedures.GetSPList
 go
 
 
-
 Commands completed successfully.
 ```
+## Testing
 
+For a small test, consider two two lists, the first list is in SharePoint 2010:
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/SP2010_testlist.jpg "SharePoint 2010 test list")
 
+And the second list in SharePoint 2013:
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/SP2013_testlist.jpg "SharePoint 2013 test list")
 
-
-
-
-
-
-
-
-
-
-
-
-
+Below is the sql window where I ran the stored proc, once for each list, and the output:
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/test_output.jpg "test output")
