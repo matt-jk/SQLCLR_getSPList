@@ -24,7 +24,7 @@ Add the five source files to the project by selecting the SQLCLR_getSPList proje
 ### Include the References
 
 Again, making sure the project SQLCLR_getSPList is selected in the Solution Explorer, navigate from the menu Project -> Add Reference
-![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_reference_menu.jpg  "Add Reference Step")
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_reference_menu.jpg "Add Reference Step")
 
 From the Assemblies -> Framework section, select the four choices:
 - System
@@ -32,17 +32,17 @@ From the Assemblies -> Framework section, select the four choices:
 - System.Web.Services
 - System.Xml
 
-And then click “Ok”
-![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/selecting_references.jpg  "Selecting References")
-
+And then click the “Ok” Button.  In the screen shot below you can't see all the references as the list is too long, but still you should find all four and click the checkboxes.
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/selecting_references.jpg "Selecting References")
 
 The Solution Explorer should now look like this:
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/complete_solution_explorer.jpg "Solution Explorer")
 
 You can now try a test compile from the menu Build -> Build Solution.  It should work:
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/success_build.jpg "First Build")
 
 In the output directory you’ll see the generated files as well.
-
-
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/build_output_1.jpg "Output of First Build")
 
 If you are deploying to SQL Server 2016, you can skip the next step.  This step is required for SQL Server 2008R2.  It may or may not be required on SQL 2012, I didn’t test it there.  This step has to do with the serialization / writing intermediate files to disk to handle the xml with the web service.
 
@@ -67,61 +67,4 @@ SQLCLR_getSPList.XmlSerializers.dll <-- this file only needed for SqlServer 2008
 
 
 To deploy to the Sql Server 2008R2, copy the two dll files onto a folder on the database server
-
-Open the Management Studio editor, connected to that database server, open a new query window and run the following script (for your path, my path was c:\sqlclrfiles)
-
-use tempdb
-go
-create database testdb
-go
-use testdb
-go
-ALTER DATABASE testdb
-SET TRUSTWORTHY ON
-GO
-
-if object_id('sp_getsplist','PC') is not NULL
-  drop proc sp_getsplist
-go
-
-if exists (select * from sys.assemblies where name = 'SQLCLR_getSPList.XmlSerializers')
-  drop assembly [SQLCLR_getSPList.XmlSerializers]
-go
-if exists (select * from sys.assemblies where name = 'GetSPList')
-  drop assembly GetSPList
-go
-
-CREATE ASSEMBLY GetSPList
-FROM 'c:\sqlclrfiles\SQLCLR_getSPList.dll'
---WITH PERMISSION_SET = EXTERNAL_ACCESS
-WITH PERMISSION_SET = UNSAFE
-GO
-
---this is only needed for SQL Server 2008R2
-create assembly [SQLCLR_getSPList.XmlSerializers]
-from 'c:\sqlclrfiles\SQLCLR_getSPList.XmlSerializers.dll'
-with permission_set = safe
-go
-
-CREATE PROCEDURE sp_getsplist
-  @url nvarchar(255), @listname nvarchar(255)
-AS
-EXTERNAL NAME GetSPList.StoredProcedures.GetSPList
-go
-
-
-
-Commands completed successfully.
-
-
-
-
-
-
-
-
-
-
-
-
 
