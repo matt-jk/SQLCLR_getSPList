@@ -17,17 +17,24 @@ The steps are straightforward
 Create a new data tools project (File -> New -> Project) and choose SQL Server Database Project.  Note, if you plan to run this on a sql server 2008R2, then you’ll need to choose .net 3.0 (in the screen shot).  On server 2016 it didn’t matter, that CLR could do .net 4.5  *Make the title SQLCLR_getSPList if you want things to match* and then click "Ok"
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/new_project.jpg "New Project")
 
+### Add  the source files
+Add the five source files to the project by selecting the SQLCLR_getSPList project in the Solution Explorer, and then from the menu Project -> Add Existing Item.  Add all 5 .cs files.
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_files_menu.jpg "Add Files Step")
 
-Add the five source files to the project by selecting the SQLCLR_getSPList project in the Solution Explorer, and then from the menu Project -> Add Existing Item.  Add all 5 files.
+### Include the References
 
-Now add the references.  Again, making sure the project SQLCLR_getSPList is selected in the Solution Explorer, navigate from the menu Project -> Add Reference
+Again, making sure the project SQLCLR_getSPList is selected in the Solution Explorer, navigate from the menu Project -> Add Reference
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_reference_menu.jpg  "Add Reference Step")
 
 From the Assemblies -> Framework section, select the four choices:
-System
-System.Data
-System.Web.Services
-System.Xml
+- System
+- System.Data
+- System.Web.Services
+- System.Xml
+
 And then click “Ok”
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/selecting_references.jpg  "Selecting References")
+
 
 The Solution Explorer should now look like this:
 
