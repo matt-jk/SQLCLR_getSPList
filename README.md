@@ -5,6 +5,9 @@ This feature is for times when you are building a SQL script or stored procedure
 ### Note about .net, SQL and SharePoint versions
 The two dlls in the release folder were built with .net 3.0, and tested both on SQLServer 2008 R2, and 2016.  Results were tested against SharePoint 2010 as well as SharePoint 2013. It will probably work just fine on SQL Server version 2012, and it might not need the XmlSerializers.dll file (see below) but I didn't test it.
 
+### Creating and Building a project
+Reference contents of the file [BuildInstructions.md](BuildInstructions.md)
+
 ### Deployment and executing
 There are two dlls in the release folder:
 * SQLCLR_getSPList.dll 
