@@ -1,11 +1,19 @@
 # How to Create and Build the project
 ## Step by Step instructions
-Matt Kalal
+
 
 First note that I used Visual Studio 2017 with the SQL Server data tools included. See the about window below.
+
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/VS_help_about.jpg "Visual Studio About")
 
 The steps are straightforward
+1. Create a new project
+2. Insert the source files
+3. Include the references
+4. *Optional* - Configure the post build event - *only needed for Sql Server 2008 R2*
+5. Build
+
+
 
 If you want to create a solution and build these from scratch (which is really what you should do if you want to use it)  These are the steps I took to get it working.  I tested it on a SQL Server database 2008R2 as well as 2016
 
