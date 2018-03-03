@@ -49,16 +49,15 @@ In the output directory you’ll see the generated files as well.
 
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/build_output_1.jpg "Output of First Build")
 
-If you are deploying to SQL Server 2016, you can skip the next step.  This step is required for SQL Server 2008R2.  It may or may not be required on SQL 2012, I didn’t test it there.  This step has to do with the serialization / writing intermediate files to disk to handle the xml with the web service.
+### Configure the post build event
 
-You need the program “sgen.exe” and on my system there were a handful of copies for different .net versions.  The one I found to work was in the folder below, yours may be in a different folder.
-C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sgen.exe
-Adding this will create the file SP2010WS.XmlSerializers.dll
+This step is only required if you are building the project for SQL 2008 R2 (or perhaps 2012, I didn't test it on 2012 so I can't tell).  In my testing on SQL 2016, you did not need this step. This step has to do with the serialization / writing intermediate files to disk to handle the xml with the web service.
 
-Make sure the SQLCLR_getSPList project is highlighted in the solution explorer, and from the menu navigate to Project -> SQLCLR_getSPList Properties.  From the “Build Events” section, enter the location of your chosen sgen.exe, with the parameters /force “$(TargetPath)”.  In my example I did this:
+**A small warning** that there is a bit of build-deploy-test-repeat cycles here. You need the program “sgen.exe” and on my system there were a handful of copies for different .net versions, but I couldn't tell which is for which.  The one I found to work with .net 3 was in the folder `C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sgen.exe` but yours may be different. Adding this will create the file SP2010WS.XmlSerializers.dll.
 
-"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sgen.exe" /force "$(TargetPath)"
+Make sure the SQLCLR_getSPList project is highlighted in the solution explorer, and from the menu navigate to Project -> SQLCLR_getSPList Properties.  From the “Build Events” section, enter the location of your chosen sgen.exe, with the parameters /force “$(TargetPath)”.  In my example I typed `"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\x64\sgen.exe" /force "$(TargetPath)"` and as I indicated, yours may need to be different.
 
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_post_build.jpg "Post Build")
 
 Now you should be ready to compile the project.  From the menu click Build -> Rebuild Solution:
 
