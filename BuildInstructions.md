@@ -13,14 +13,10 @@ The steps are straightforward
 4. *Optional* - Configure the post build event - *only needed for Sql Server 2008 R2*
 5. Build
 
+### Create the Project
+Create a new data tools project (File -> New -> Project) and choose SQL Server Database Project.  Note, if you plan to run this on a sql server 2008R2, then you’ll need to choose .net 3.0 (in the screen shot).  On server 2016 it didn’t matter, that CLR could do .net 4.5  *Make the title SQLCLR_getSPList if you want things to match* and then click "Ok"
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/new_project.jpg "New Project")
 
-
-If you want to create a solution and build these from scratch (which is really what you should do if you want to use it)  These are the steps I took to get it working.  I tested it on a SQL Server database 2008R2 as well as 2016
-
-I used Visual Studio 2017 (see help_about) with the sql server data tools included.
-
-Step 1 Create a new data tools project (File -> New -> Project) and choose SQL Server Database Project
-Note, if you plan to run this on a sql server 2008R2, then you’ll need to choose .net 3.0 (in the screen shot).  On server 2016 it didn’t matter, that CLR could do .net 4.5  Give it the title SQLCLR_getSPList if you want things to match
 
 Add the five source files to the project by selecting the SQLCLR_getSPList project in the Solution Explorer, and then from the menu Project -> Add Existing Item.  Add all 5 files.
 
