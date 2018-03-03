@@ -76,7 +76,7 @@ Regarding the files that get created by the build:
 - SQLCLR_getSPList.dll *\<-- You need this file for all deployments*
 - SQLCLR_getSPList.XmlSerializers.dll *\<-- this file only needed for SqlServer 2008 R2*
 
-To deploy, see the instructions at the bottom of the [README](README.md) file.
+To deploy, see the instructions in the [README](README.md) file.
 
 *2018, Matt Kalal*
 
