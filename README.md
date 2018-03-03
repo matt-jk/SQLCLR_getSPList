@@ -64,11 +64,11 @@ Commands completed successfully.
 ```
 ## Testing
 
-For a small test, consider two two lists, the first list is in SharePoint 2010:
+#### For a small test, consider two lists, the first list is in SharePoint 2010:
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/SP2010_testlist.jpg "SharePoint 2010 test list")
 
-And the second list in SharePoint 2013:
+#### And the second list in SharePoint 2013:
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/SP2013_testlist.jpg "SharePoint 2013 test list")
 
-Below is the sql window where I ran the stored proc, once for each list, and the output:
+#### Below is the sql window where I ran the stored proc, once for each list, and the output:
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/test_output.jpg "test output")
