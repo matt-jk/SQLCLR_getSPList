@@ -59,15 +59,22 @@ Make sure the SQLCLR_getSPList project is highlighted in the solution explorer, 
 
 ![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/add_post_build.jpg "Post Build")
 
+### Build the project
+
 Now you should be ready to compile the project.  From the menu click Build -> Rebuild Solution:
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/success_build_2.jpg "Successful Build")
 
 And these are the output files:
 
-SQLCLR_getSPList.dacpac
-SQLCLR_getSPList.pdb
-these are used for a model of deployment, I didn’t use them.
-SQLCLR_getSPList.dll  <-- this is the file you need
-SQLCLR_getSPList.XmlSerializers.dll <-- this file only needed for SqlServer 2008R2
+![](https://raw.githubusercontent.com/matt-jk/SQLCLR_getSPList/master/images/build_output_2.jpg "Build Output")
+
+Regarding the files that get created by the build:
+
+- These two files are used for a different model of deployment.  I didn't use them
+  - SQLCLR_getSPList.dacpac
+  - SQLCLR_getSPList.pdb
+- SQLCLR_getSPList.dll *\<-- You need this file for all deployments*
+- SQLCLR_getSPList.XmlSerializers.dll *\<-- this file only needed for SqlServer 2008 R2*
 
 
 To deploy to the Sql Server 2008R2, copy the two dll files onto a folder on the database server
